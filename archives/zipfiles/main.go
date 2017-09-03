@@ -60,6 +60,7 @@ func unpackZip() {
 
 	for _, z := range zipReader.File {
 		file, _ := z.Open()
+		defer file.Close()
 
 		io.Copy(os.Stdout, file)
 	}
